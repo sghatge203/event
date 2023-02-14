@@ -18,9 +18,10 @@
   .custom-slider-width{
     margin-left: 15px !important;
     margin-right: 15px !important;
+    padding-top: 1em;
   }
   .custom-container{
-    margin-top: 6em;
+    margin-top: 5em;
   }
   .upcoming-box{
     height:100% !important;
@@ -31,4 +32,7 @@
   }
   .image-event{
     border-radius: 25px !important;
+  }
+  .slick-slide > div {
+    text-align: center !important;
   }

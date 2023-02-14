@@ -15,6 +15,7 @@ import Carousel from "./index-sections/Carousel.js";
 import { Container } from "reactstrap";
 
 function Index(props) {
+  const {history} = props;
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -26,6 +27,10 @@ function Index(props) {
       document.body.classList.remove("sidebar-collapse");
     };
   });
+
+  const handleEventProfile = ()=>{
+    history.push("/event-profile/1")
+  }
   return (
     <>
       <IndexNavbar {...props} />
@@ -34,7 +39,9 @@ function Index(props) {
         <div className="main">
           <Container className="custom-container">
             <div className="content-center brand"></div>
-            <Carousel />
+            <Carousel
+             clickEvent={handleEventProfile}
+            />
           </Container>
           <Container className="upcoming-event-section">
             <div className="content-center brand"></div>

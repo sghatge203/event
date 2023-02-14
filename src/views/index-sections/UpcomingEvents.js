@@ -33,9 +33,9 @@ const settings = {
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 1,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 0,
             infinite: true,
           }
         }

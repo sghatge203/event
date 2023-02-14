@@ -38,6 +38,7 @@ import Offers from "views/Offers.js";
 import HelpandSupport from 'views/HelpandSupport.js';
 import MyTickets from 'views/MyTickets.js';
 import MyProfile from 'views/MyProfile.js';
+import EventProfile from "views/EventProfile.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -81,6 +82,10 @@ root.render(
          <Route
           path="/myProfile"
           render={(props) => <MyProfile {...props} />}
+        />
+         <Route
+          path="/event-profile/:id"
+          render={(props) => <EventProfile {...props} />}
         />
         
         <Redirect to="/index" />
