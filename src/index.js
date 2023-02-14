@@ -24,12 +24,20 @@ import "assets/css/bootstrap.min.css";
 import "assets/scss/now-ui-kit.scss?v=1.5.0";
 import "assets/demo/demo.css?v=1.5.0";
 import "assets/demo/nucleo-icons-page-styles.css?v=1.5.0";
+//styles for react slick
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // pages for this kit
 import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
+import RegisterPage from "views/examples/RegisterPage.js";
+import Offers from "views/Offers.js";
+import HelpandSupport from 'views/HelpandSupport.js';
+import MyTickets from 'views/MyTickets.js';
+import MyProfile from 'views/MyProfile.js';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -54,6 +62,27 @@ root.render(
           path="/login-page"
           render={(props) => <LoginPage {...props} />}
         />
+         <Route
+          path="/register-page"
+          render={(props) => <RegisterPage {...props} />}
+        />
+         <Route
+          path="/offers"
+          render={(props) => <Offers {...props} />}
+        />
+         <Route
+          path="/help"
+          render={(props) => <HelpandSupport {...props} />}
+        />
+         <Route
+          path="/myTickets"
+          render={(props) => <MyTickets {...props} />}
+        />
+         <Route
+          path="/myProfile"
+          render={(props) => <MyProfile {...props} />}
+        />
+        
         <Redirect to="/index" />
         <Redirect from="/" to="/index" />
       </Switch>

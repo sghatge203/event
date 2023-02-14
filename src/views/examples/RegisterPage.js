@@ -13,17 +13,15 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  Col,
+  Col
 } from "reactstrap";
 
 // core components
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 
-function LoginPage(props) {
-  const { history } = props;
+function RegisterPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
-
   React.useEffect(() => {
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
@@ -35,9 +33,6 @@ function LoginPage(props) {
       document.body.classList.remove("sidebar-collapse");
     };
   }, []);
-  const redirectToRegister = () => {
-    history.push("/register-page");
-  };
   return (
     <>
       {/* <ExamplesNavbar /> */}
@@ -45,7 +40,7 @@ function LoginPage(props) {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")",
+            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
           }}
         ></div>
         <div className="content">
@@ -59,7 +54,7 @@ function LoginPage(props) {
                         alt="..."
                         src={require("assets/img/now-logo.png")}
                       ></img>
-                      <span>Login </span>
+                       <span>Register</span>
                     </div>
                   </CardHeader>
                   <CardBody>
@@ -75,7 +70,7 @@ function LoginPage(props) {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="Email address..."
+                        placeholder="First Name..."
                         type="text"
                         onFocus={() => setFirstFocus(true)}
                         onBlur={() => setFirstFocus(false)}
@@ -115,7 +110,8 @@ function LoginPage(props) {
                       <h6>
                         <a
                           className="link"
-                          onClick={() => redirectToRegister()}
+                          href="#pablo"
+                          onClick={(e) => e.preventDefault()}
                         >
                           Create Account
                         </a>
@@ -128,7 +124,7 @@ function LoginPage(props) {
                           href="#pablo"
                           onClick={(e) => e.preventDefault()}
                         >
-                          Need Help?
+                          Forogt Password?
                         </a>
                       </h6>
                     </div>
@@ -144,4 +140,4 @@ function LoginPage(props) {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

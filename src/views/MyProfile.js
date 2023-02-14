@@ -1,20 +1,11 @@
 import React from "react";
-
-// reactstrap components
-// import {
-// } from "reactstrap";
-
-// core components
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
-import IndexHeader from "components/Headers/IndexHeader.js";
 import DarkFooter from "components/Footers/DarkFooter.js";
 
 // sections for this page
-import UpcomingEvents from "./index-sections/UpcomingEvents.js";
-import Carousel from "./index-sections/Carousel.js";
 import { Container } from "reactstrap";
 
-function Index(props) {
+function MyProfile(props) {
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -33,27 +24,8 @@ function Index(props) {
         {/* <IndexHeader /> */}
         <div className="main">
           <Container className="custom-container">
-            <div className="content-center brand"></div>
-            <Carousel />
+          My Profile
           </Container>
-          <Container className="upcoming-event-section">
-            <div className="content-center brand"></div>
-            <UpcomingEvents />
-          </Container>
-        
-          {/* <Images />
-          <BasicElements />
-          <Navbars />
-          <Tabs />
-          <Pagination />
-          <Notifications />
-          <Typography />
-          <Javascript />
-          <NucleoIcons />
-          <CompleteExamples />
-          <SignUp />
-          <Examples />
-          <Download /> */}
         </div>
         <DarkFooter />
       </div>
@@ -61,4 +33,4 @@ function Index(props) {
   );
 }
 
-export default Index;
+export default MyProfile;
