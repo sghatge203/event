@@ -1,3 +1,4 @@
+import authGuard from "config/authguard";
 import React from "react";
 // reactstrap components
 import {
@@ -40,6 +41,7 @@ function IndexNavbar(props) {
     history.push("/login-page");
   };
   const redirectToLogout = () => {
+    localStorage.clear();
     history.push("/index");
   };
   const redirectToOffers = () => {
@@ -103,28 +105,22 @@ function IndexNavbar(props) {
                   ></Input>
                 </FormGroup>
               </NavItem>
-              <NavItem>
-                <NavLink onClick={() => redirectToMyProfile()}>
-                  <i className="now-ui-icons users_single-02"></i>
-                  <p>My Profile</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink onClick={() => redirectToMyTickets()}>
-                  <i className="now-ui-icons location_bookmark"></i>
-                  <p>My tickets</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  onClick={(e) => {
-                    redirectToHelp();
-                  }}
-                >
-                  <i className="now-ui-icons travel_info"></i>
-                  <p>Help & Support</p>
-                </NavLink>
-              </NavItem>
+              {authGuard() ? (
+                <NavItem>
+                  <NavLink onClick={() => redirectToMyProfile()}>
+                    <i className="now-ui-icons users_single-02"></i>
+                    <p>My Profile</p>
+                  </NavLink>
+                </NavItem>
+              ) : null}
+              {authGuard() ? (
+                <NavItem>
+                  <NavLink onClick={() => redirectToMyTickets()}>
+                    <i className="now-ui-icons location_bookmark"></i>
+                    <p>My tickets</p>
+                  </NavLink>
+                </NavItem>
+              ) : null}
               <NavItem>
                 <NavLink
                   onClick={(e) => {
@@ -135,26 +131,29 @@ function IndexNavbar(props) {
                   <p>Offers</p>
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink
-                  onClick={(e) => {
-                    redirectToLogout();
-                  }}
-                >
-                  <i className="now-ui-icons media-1_button-power"></i>
-                  <p>Logout</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  onClick={(e) => {
-                    redirectToLogin();
-                  }}
-                >
-                  <i className="now-ui-icons arrows-1_minimal-right"></i>
-                  <p>Sign In</p>
-                </NavLink>
-              </NavItem>
+              {!authGuard() ? (
+                <NavItem>
+                  <NavLink
+                    onClick={(e) => {
+                      redirectToLogin();
+                    }}
+                  >
+                    <i className="now-ui-icons arrows-1_minimal-right"></i>
+                    <p>Sign In</p>
+                  </NavLink>
+                </NavItem>
+              ) : (
+                <NavItem>
+                  <NavLink
+                    onClick={(e) => {
+                      redirectToLogout();
+                    }}
+                  >
+                    <i className="now-ui-icons media-1_button-power"></i>
+                    <p>Logout</p>
+                  </NavLink>
+                </NavItem>
+              )}
             </Nav>
           </Collapse>
         </Container>

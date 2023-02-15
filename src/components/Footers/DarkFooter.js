@@ -26,7 +26,7 @@ function DarkFooter() {
             href="https://www.invisionapp.com?ref=nukr-dark-footer"
             target="_blank"
           >
-            TickeCounty
+            TicketCounty
           </a>
           . Coded by{" "}
           <a

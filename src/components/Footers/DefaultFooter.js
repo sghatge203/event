@@ -18,7 +18,7 @@ function DefaultFooter() {
                   href="https://www.creative-tim.com?ref=nukr-default-footer"
                   target="_blank"
                 >
-                  Creative Tim
+                  Ticket County
                 </a>
               </li>
               <li>
@@ -45,14 +45,14 @@ function DefaultFooter() {
               href="https://www.invisionapp.com?ref=nukr-default-footer"
               target="_blank"
             >
-              Invision
+              TicketCounty
             </a>
             . Coded by{" "}
             <a
               href="https://www.creative-tim.com?ref=nukr-default-footer"
               target="_blank"
             >
-              Creative Tim
+              TicketCounty
             </a>
             .
           </div>

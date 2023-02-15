@@ -39,7 +39,7 @@ import HelpandSupport from 'views/HelpandSupport.js';
 import MyTickets from 'views/MyTickets.js';
 import MyProfile from 'views/MyProfile.js';
 import EventProfile from "views/EventProfile.js";
-
+import ForgotPassword from "views/examples/ForgotPassword.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -86,6 +86,10 @@ root.render(
          <Route
           path="/event-profile/:id"
           render={(props) => <EventProfile {...props} />}
+        />
+         <Route
+          path="/forgot-password"
+          render={(props) => <ForgotPassword {...props} />}
         />
         
         <Redirect to="/index" />

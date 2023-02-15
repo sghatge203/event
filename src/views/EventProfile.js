@@ -4,6 +4,7 @@ import DarkFooter from "components/Footers/DarkFooter.js";
 
 // sections for this page
 import { Container } from "reactstrap";
+import img4 from "../assets/images/show.jpg";
 
 function EventProfile(props) {
   React.useEffect(() => {
@@ -23,7 +24,19 @@ function EventProfile(props) {
       <div className="wrapper">
         {/* <IndexHeader /> */}
         <div className="main">
-          <Container className="custom-container">Event Profile</Container>
+          <Container className="custom-container">
+            <h5 className="pt-4">Event Profile</h5>
+            <div className="row">
+              <div className="col-md-2">
+                <div className="upcoming-box">
+                  <img src={img4} alt="bassi" className="image-event" />
+                </div>
+              </div>
+
+              <div className="col-md-4"></div>
+              <div className="col-md-4"></div>
+            </div>
+          </Container>
         </div>
         <DarkFooter />
       </div>

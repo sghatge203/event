@@ -17,16 +17,13 @@ import {
 } from "reactstrap";
 
 // core components
-import TransparentFooter from "components/Footers/TransparentFooter.js";
 import { LoginModel } from "components/Models/LoginModel";
-import axiosInstance from "config/https";
 
-function LoginPage(props) {
+function ForgotPassword(props) {
   const { history } = props;
   const [form, setForm] = useState(LoginModel);
 
   const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
 
   React.useEffect(() => {
     document.body.classList.add("login-page");
@@ -39,9 +36,6 @@ function LoginPage(props) {
       document.body.classList.remove("sidebar-collapse");
     };
   }, []);
-  const redirectToRegister = () => {
-    history.push("/register-page");
-  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -51,25 +45,7 @@ function LoginPage(props) {
   };
 
   const handleSubmit = () => {
-    axiosInstance
-      .post("auth/signin", form)
-      .then((res) => {
-        if (res.data.status === 200) {
-          localStorage.setItem("county_email",res.data.response.email);
-          localStorage.setItem("county_roles",res.data.response.roles);
-          localStorage.setItem("county_token",res.data.response.accessToken)
-          history.push("/index");
-        }
-        else{
-          console.log("Error", res);
-        }
-      })
-      .catch((err) => {
-        console.log("Error", err);
-      });
-  };
-  const redirectToForgot = () => {
-    history.push("/forgot-password");
+    console.log("form", form);
   };
   return (
     <>
@@ -92,7 +68,7 @@ function LoginPage(props) {
                         alt="..."
                         src={require("assets/img/now-logo.png")}
                       ></img>
-                      <span>Login </span>
+                      <span>Forgot Password </span>
                     </div>
                   </CardHeader>
                   <CardBody>
@@ -116,26 +92,6 @@ function LoginPage(props) {
                         onChange={(e) => handleChange(e)}
                       ></Input>
                     </InputGroup>
-                    <InputGroup
-                      className={
-                        "no-border input-lg" +
-                        (lastFocus ? " input-group-focus" : "")
-                      }
-                    >
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="now-ui-icons text_caps-small"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input
-                        placeholder="Password..."
-                        type="text"
-                        name="password"
-                        onFocus={() => setLastFocus(true)}
-                        onBlur={() => setLastFocus(false)}
-                        onChange={(e) => handleChange(e)}
-                      ></Input>
-                    </InputGroup>
                   </CardBody>
                   <CardFooter className="text-center">
                     <Button
@@ -145,35 +101,17 @@ function LoginPage(props) {
                       onClick={(e) => handleSubmit(e)}
                       size="lg"
                     >
-                      Login
+                     Send
                     </Button>
-                    <div className="pull-left">
-                      <h6>
-                        <a
-                          className="link"
-                          onClick={() => redirectToRegister()}
-                        >
-                          Create Account
-                        </a>
-                      </h6>
-                    </div>
-                    <div className="pull-right">
-                      <h6>
-                        <a className="link" onClick={(e) => redirectToForgot()}>
-                          Forgot Password?
-                        </a>
-                      </h6>
-                    </div>
                   </CardFooter>
                 </Form>
               </Card>
             </Col>
           </Container>
         </div>
-        <TransparentFooter />
       </div>
     </>
   );
 }
 
-export default LoginPage;
+export default ForgotPassword;
