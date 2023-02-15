@@ -2,6 +2,8 @@ const apiEndpoints = {
     // authentication apis
     routes_auth_signup: `/api/auth/signup`,
     routes_auth_signin: `/api/auth/signin`,
+
+
     routes_auth_partner_signup: `/api/auth/partner/signup`,
     routes_auth_partner_signin: `/api/auth/partner/signin`,
   
@@ -14,12 +16,16 @@ const apiEndpoints = {
     routes_public_all_cat_events:"/api/public/get-cat-events",
     routes_public_all_eve_by_catsIds:'/api/public/get-eve-by-cat',
     routes_public_search:"/api/public/search/:name",
+    
     // User apis
+    routes_user_get_profile:"/api/user/profile",
+    routes_user_update:"/api/user/update",
+
+
     routes_user_add_comment: "/api/user/add-comment",
     routes_user_book_ticket: "/api/user/book-ticket",
     routes_user_get_ticket: "/api/user/get-ticket-details",
-    routes_user_get_profile:"/api/user/profile",
-    routes_user_update:"/api/user/update",
+   
   
     // partner apis
     routes_partner_create_event: "/api/partner/create-event",

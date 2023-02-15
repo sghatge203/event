@@ -98,7 +98,7 @@ exports.signin = (req, res) => {
         return;
       }
       if (user == null) {
-        partnerSignin(req, res);
+        // partnerSignin(req, res);
       } else {
         var passwordIsValid = bcrypt.compareSync(
           req.body.password,
@@ -211,58 +211,58 @@ exports.partnerSignup = (req, res) => {
 };
 
 // Partner Sign in
-const partnerSignin = (req, res) => {
-  Partner.findOne({
-    email: req.body.email,
-  })
-    .populate("roles", "-__v")
-    .exec((err, user) => {
-      if (err) {
-        res.status(200).send({
-          status: 404,
-          message: err,
-        });
-        return;
-      }
+// const partnerSignin = (req, res) => {
+//   Partner.findOne({
+//     email: req.body.email,
+//   })
+//     .populate("roles", "-__v")
+//     .exec((err, user) => {
+//       if (err) {
+//         res.status(200).send({
+//           status: 404,
+//           message: err,
+//         });
+//         return;
+//       }
 
-      if (!user) {
-        return res.status(200).send({
-          status: 404,
-          message: "User Not found.",
-        });
-      } else {
-        var passwordIsValid = bcrypt.compareSync(
-          req.body.password,
-          user.password
-        );
+//       if (!user) {
+//         return res.status(200).send({
+//           status: 404,
+//           message: "User Not found.",
+//         });
+//       } else {
+//         var passwordIsValid = bcrypt.compareSync(
+//           req.body.password,
+//           user.password
+//         );
 
-        if (!passwordIsValid) {
-          return res.status(200).send({
-            status: 404,
-            message: "Invalid Password!.",
-            accessToken: null,
-          });
-        }
+//         if (!passwordIsValid) {
+//           return res.status(200).send({
+//             status: 404,
+//             message: "Invalid Password!.",
+//             accessToken: null,
+//           });
+//         }
 
-        var token = jwt.sign({ id: user.id }, config.secret, {
-          expiresIn: 86400, // 24 hours
-        });
+//         var token = jwt.sign({ id: user.id }, config.secret, {
+//           expiresIn: 86400, // 24 hours
+//         });
 
-        var authorities = [];
+//         var authorities = [];
 
-        for (let i = 0; i < user.roles.length; i++) {
-          authorities.push(rolesCode.partner_role);
-        }
-        res.status(200).send({
-          status: 200,
-          message: "Partner Usrr Login Succesfully",
-          response: {
-            id: user._id,
-            email: user.email,
-            roles: authorities,
-            accessToken: token,
-          },
-        });
-      }
-    });
-};
+//         for (let i = 0; i < user.roles.length; i++) {
+//           authorities.push(rolesCode.partner_role);
+//         }
+//         res.status(200).send({
+//           status: 200,
+//           message: "Partner Usrr Login Succesfully",
+//           response: {
+//             id: user._id,
+//             email: user.email,
+//             roles: authorities,
+//             accessToken: token,
+//           },
+//         });
+//       }
+//     });
+// };
